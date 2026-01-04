@@ -16,6 +16,15 @@ FROM docker.io/nginxinc/nginx-unprivileged:stable AS prod
 
 LABEL org.opencontainers.image.source="https://github.com/karlomikus/vue-salt-rim"
 
+# `docker/entrypoint.sh` uses `envsubst` to render `/config.js` from a template.
+# The nginx-unprivileged base image doesn't guarantee `envsubst` is present.
+USER root
+RUN if command -v apk >/dev/null 2>&1; then \
+		apk add --no-cache gettext; \
+	else \
+		apt-get update && apt-get install -y --no-install-recommends gettext-base && rm -rf /var/lib/apt/lists/*; \
+	fi
+
 COPY --from=build --chown=www-data:www-data /app/dist /var/www/html
 
 COPY --from=build --chown=www-data:www-data /app/docker/config.js /var/www/html/config.js.template
