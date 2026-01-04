@@ -433,7 +433,7 @@ watch(
 .ingredient-details__actions {
     position: absolute;
     right: 20px;
-    top: -25px;
+    top: 20px;
     display: grid;
     grid-template-columns: 1fr;
     column-gap: var(--gap-size-1);
@@ -513,7 +513,7 @@ watch(
 
 .ingredient-details__actions {
     position: absolute;
-    top: -25px;
+    top: 20px;
     right: 20px;
     display: flex;
     gap: var(--gap-size-1);
