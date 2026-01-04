@@ -1,6 +1,6 @@
 .block-container {
     --padding-block-container: 1.5rem;
-    --color-background-block-container: rgba(255, 255, 255, 0.12);
+    --color-background-block-container: rgba(255, 255, 255, 0.18);
     --color-border-bottom-block-container: rgba(255, 255, 255, 0.1);
     --color-border-top-block-container: rgba(255, 255, 255, 0.15);
 
@@ -12,7 +12,7 @@
     backdrop-filter: blur(4px);
 
     .dark-theme & {
-        --color-background-block-container: rgba(255, 255, 255, 0.15);
+        --color-background-block-container: rgba(40, 40, 40, 0.8);
         --color-border-bottom-block-container: rgba(255, 255, 255, 0.1);
         --color-border-top-block-container: rgba(255, 255, 255, 0.1);
 

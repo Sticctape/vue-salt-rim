@@ -757,8 +757,8 @@ swiper-container {
     padding: 0.5rem 0.75rem;
 
     .dark-theme & {
-        --ci-clr-list-bg: var(--clr-gray-700);
-        color: var(--clr-gray-300);
+        --ci-clr-list-bg: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.9);
     }
 }
 

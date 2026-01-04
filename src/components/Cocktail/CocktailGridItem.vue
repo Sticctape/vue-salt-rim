@@ -110,7 +110,7 @@ onMounted(() => {
 }
 
 .cocktail-grid-item__content {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(40, 40, 40, 1);
     padding: 1.5rem;
     border-radius: var(--radius-3);
     margin-top: -2.25rem;

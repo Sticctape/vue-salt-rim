@@ -148,11 +148,18 @@ refreshMenu()
     color: var(--clr-gray-600);
 }
 
-.public-page-menu__category h3 {
-    font-size: 1.25em;
-    color: var(--clr-gray-500);
-    font-weight: var(--fw-bold);
-    font-family: var(--font-heading);
+.public-page-menu .public-page-menu__category h3 {
+    font-size: 1.25em !important;
+    color: var(--clr-gray-200) !important;
+    font-weight: var(--fw-bold) !important;
+    font-family: var(--font-heading) !important;
+    text-shadow: none !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.dark-theme .public-page-menu .public-page-menu__category h3 {
+    color: var(--clr-gray-200) !important;
+    font-size: 1.25em !important;
 }
 
 .public-page-menu__category__cocktails {

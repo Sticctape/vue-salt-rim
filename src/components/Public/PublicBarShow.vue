@@ -86,7 +86,7 @@ const image = computed(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
+    width: 120px;
     height: 60px;
 
     .dark-theme & svg {
