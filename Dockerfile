@@ -28,7 +28,7 @@ RUN if command -v apk >/dev/null 2>&1; then \
 COPY --from=build --chown=www-data:www-data /app/dist /var/www/html
 
 COPY --from=build --chown=www-data:www-data /app/docker/config.js /var/www/html/config.js.template
-COPY --chown=www-data:www-data ./docker/entrypoint.sh /usr/local/bin/entrypoint
+COPY --chown=www-data:www-data --chmod=0644 ./docker/entrypoint.sh /usr/local/bin/entrypoint
 
 # Make sure the entrypoint is runnable even if it was edited on Windows
 # (strip CRLF + UTF-8 BOM if present).
@@ -43,9 +43,8 @@ USER www-data
 
 EXPOSE 8080
 
-RUN chmod +x /usr/local/bin/entrypoint
-
-CMD [ "/usr/local/bin/entrypoint" ]
+# Run through sh so we don't depend on the execute bit.
+CMD [ "/bin/sh", "/usr/local/bin/entrypoint" ]
 
 FROM node:latest AS dev
 
