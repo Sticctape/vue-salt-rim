@@ -54,7 +54,7 @@
                 </nav>
             </div>
         </header>
-        <nav v-if="appState.bar.id" class="subnavigation-bar">
+        <nav class="subnavigation-bar">
             <div class="subnavigation-bar__nav">
                 <RouterLink :to="{ name: 'home' }" exact-active-class="current-nav">{{ $t('shelf.title') }}</RouterLink>
                 <RouterLink :to="{ name: 'cocktails' }" :class="{ 'current-nav': $route.path.startsWith('/cocktails') }">{{ $t('cocktail.cocktails') }}</RouterLink>
@@ -95,6 +95,14 @@ export default {
             showSearchDialog: false,
             shouldUseBasicSearch: shouldUseBasicSearch,
         }
+    },
+    created() {
+        document.addEventListener('keydown', evt => {
+            if (evt.ctrlKey && evt.key === 'k') {
+                evt.preventDefault()
+                this.showSearchDialog = !this.showSearchDialog
+            }
+        })
     },
     created() {
         document.addEventListener('keydown', evt => {
