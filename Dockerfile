@@ -18,7 +18,7 @@ LABEL org.opencontainers.image.source="https://github.com/karlomikus/vue-salt-ri
 
 COPY --from=build --chown=www-data:www-data /app/dist /var/www/html
 
-COPY --from=build --chown=www-data:www-data /app/docker/config.js /var/www/config.js
+COPY --from=build --chown=www-data:www-data /app/docker/config.js /var/www/html/config.js.template
 COPY --chown=www-data:www-data ./docker/entrypoint.sh /usr/local/bin/entrypoint
 
 RUN rm /etc/nginx/conf.d/default.conf
