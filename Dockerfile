@@ -30,6 +30,12 @@ COPY --from=build --chown=www-data:www-data /app/dist /var/www/html
 COPY --from=build --chown=www-data:www-data /app/docker/config.js /var/www/html/config.js.template
 COPY --chown=www-data:www-data ./docker/entrypoint.sh /usr/local/bin/entrypoint
 
+# Make sure the entrypoint is runnable even if it was edited on Windows
+# (strip CRLF + UTF-8 BOM if present).
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint \
+	&& awk 'NR==1{sub(/^\357\273\277/,"")} {print}' /usr/local/bin/entrypoint > /tmp/entrypoint \
+	&& mv /tmp/entrypoint /usr/local/bin/entrypoint
+
 RUN rm /etc/nginx/conf.d/default.conf
 COPY --chown=www-data:www-data ./docker/default.conf /etc/nginx/conf.d/default.conf
 
