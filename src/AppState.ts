@@ -17,7 +17,7 @@ class AppState {
     _key: string
 
     constructor() {
-        this.theme = 'light'
+        this.theme = 'dark'
         this.defaultUnit = 'ml'
         this.defaultShelf = 'bar'
         this.language = 'en-US'

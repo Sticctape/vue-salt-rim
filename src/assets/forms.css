@@ -20,7 +20,7 @@
 }
 
 .form-label {
-    --form-clr-label: rgba(255, 255, 255, 0.8);
+    --form-clr-label: rgba(255, 255, 255, 0.85);
     font-size: 1rem;
     font-weight: 600;
     color: var(--form-clr-label);
@@ -51,11 +51,11 @@
 .form-input,
 .form-select {
     --form-clr-text: rgba(255, 255, 255, 0.95);
-    --form-clr-bg: rgba(255, 255, 255, 0.08);
-    --form-clr-bg-focus: rgba(255, 255, 255, 0.12);
-    --form-clr-border: rgba(255, 255, 255, 0.2);
+    --form-clr-bg: rgba(255, 255, 255, 0.10);
+    --form-clr-bg-focus: rgba(255, 255, 255, 0.08);
+    --form-clr-border: rgba(255, 255, 255, 0.15);
     --form-clr-border-focus: rgba(100, 150, 255, 0.5);
-    --form-clr-placeholder: rgba(255, 255, 255, 0.6);
+    --form-clr-placeholder: rgba(255, 255, 255, 0.7);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -146,7 +146,7 @@ textarea.form-input,
 
 .form-actions {
     text-align: right;
-    border-top: 2px solid var(--clr-accent-100);
+    border-top: 2px solid var(--clr-gray-900);
     margin: 20px 0;
     padding: 20px 0;
 }
@@ -161,7 +161,7 @@ textarea.form-input,
 
 .form-input-hint {
     font-size: .75rem;
-    color: var(--clr-gray-700);
+    color: var(--clr-gray-500);
 }
 
 .dark-theme .form-input-hint {

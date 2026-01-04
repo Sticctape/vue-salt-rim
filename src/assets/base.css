@@ -53,21 +53,22 @@
 
     --shadow-color: 0deg 0% 0%;
     --shadow-elevation-low:
-        0px -1px 4px rgba(0, 0, 0, 0.3),
-        0px 1px 1.1px rgba(0, 0, 0, 0.2);
+        0px 0.7px 0.8px rgba(0, 0, 0, 0.3),
+        0px 1.1px 1.2px rgba(0, 0, 0, 0.25);
     --shadow-elevation-medium:
-        0px 0.4px 0.5px rgba(0, 0, 0, 0.3),
-        0px 1.1px 1.2px rgba(0, 0, 0, 0.25),
-        0px 2.6px 2.9px rgba(0, 0, 0, 0.25),
-        0px 6.3px 7.1px rgba(0, 0, 0, 0.3);
+        0px 0.7px 0.8px rgba(0, 0, 0, 0.3),
+        0px 2.2px 2.5px rgba(0, 0, 0, 0.3),
+        0.1px 5.4px 6.1px rgba(0, 0, 0, 0.35),
+        0.3px 13.3px 15px rgba(0, 0, 0, 0.4);
     --shadow-elevation-high:
-        0px 0.4px 0.5px rgba(0, 0, 0, 0.3),
-        0px 1.8px 2px rgba(0, 0, 0, 0.3),
-        0px 3.5px 3.9px rgba(0, 0, 0, 0.35),
-        0px 6px 6.8px rgba(0, 0, 0, 0.4),
-        0px 10.1px 11.4px rgba(0, 0, 0, 0.45),
-        -0.1px 16.5px 18.6px rgba(0, 0, 0, 0.5),
-        -0.1px 26px 29.3px rgba(0, 0, 0, 0.55);
+        0px 0.7px 0.8px rgba(0, 0, 0, 0.3),
+        0.1px 3.9px 4.4px rgba(0, 0, 0, 0.35),
+        0.2px 7.2px 8.1px rgba(0, 0, 0, 0.4),
+        0.3px 11.9px 13.4px rgba(0, 0, 0, 0.45),
+        0.4px 18.9px 21.3px rgba(0, 0, 0, 0.5),
+        0.6px 29.6px 33.3px rgba(0, 0, 0, 0.55),
+        1px 45px 50.6px rgba(0, 0, 0, 0.6),
+        1.4px 66.3px 74.6px rgba(0, 0, 0, 0.65);
 
     --shadow-color-dark: 0deg 0% 0%;
     --shadow-elevation-low-dark:
@@ -88,10 +89,10 @@
         1px 45px 50.6px rgba(0, 0, 0, 0.6),
         1.4px 66.3px 74.6px rgba(0, 0, 0, 0.65);
 
-    --clr-link-color: rgba(255, 255, 255, 0.8);
-    --clr-link-color-hover: #6b9fff;
-    --clr-body-font: #ffffff;
-    --clr-body-bg: #000000;
+    --clr-link-color: var(--clr-gray-200);
+    --clr-link-color-hover: var(--clr-accent-400);
+    --clr-body-font: var(--clr-gray-50);
+    --clr-body-bg: var(--clr-gray-900);
 
     --default-scheme: dark;
 
@@ -100,8 +101,8 @@
     --font-mono: 'Space Mono', Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
     --fw-bold: 700;
 
-    --color-site-header: rgba(40, 40, 40);
-    --color-site-header-subnavigation: rgba(40, 40, 40);
+    --color-site-header: rgba(40, 40, 40, 1);
+    --color-site-header-subnavigation: rgb(27, 27, 27);
     --clr-site-footer: #fff;
 
     --site-width: 1440px;
@@ -124,31 +125,6 @@
     --z-dropdown: 10;
     --z-overlay-loader: 10;
     --z-gen-ai-button: 11;
-}
-
-.dark-theme {
-    --default-scheme: dark;
-
-    --clr-accent-50: #FFF7E5;
-    --clr-accent-100: #FFEDCC;
-    --clr-accent-200: #FFDA99;
-    --clr-accent-300: #FFC66B;
-    --clr-accent-400: #FFAF37;
-    --clr-accent-500: #FF9F05;
-    --clr-accent-600: #D18400;
-    --clr-accent-700: #996300;
-    --clr-accent-800: #664400;
-    --clr-accent-900: #332300;
-
-    --clr-link-color: var(--clr-gray-200);
-    --clr-link-color-hover: var(--clr-accent-400);
-    --clr-body-font: var(--clr-gray-50);
-    --clr-body-bg: var(--clr-gray-900);
-
-    --clr-site-footer: var(--clr-gray-950);
-
-    --color-site-header: rgba(40, 40, 40, 1);
-    --color-site-header-subnavigation: rgb(27, 27, 27);
 
     --clr-gray-50: #E4E2E9;
     --clr-gray-100: #DAD6E0;
@@ -162,6 +138,20 @@
     --clr-gray-800: #201a2d;
     --clr-gray-900: #191422;
     --clr-gray-950: #120e1a;
+}
+
+.dark-theme {
+    --default-scheme: dark;
+
+    --clr-link-color: var(--clr-gray-200);
+    --clr-link-color-hover: var(--clr-accent-400);
+    --clr-body-font: var(--clr-gray-50);
+    --clr-body-bg: var(--clr-gray-900);
+
+    --clr-site-footer: var(--clr-gray-950);
+
+    --color-site-header: rgba(40, 40, 40, 1);
+    --color-site-header-subnavigation: rgb(27, 27, 27);
 }
 
 *,

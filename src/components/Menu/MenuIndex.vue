@@ -501,6 +501,13 @@ refreshBar()
 
 .menu-category {
     padding: var(--gap-size-3);
+    background-color: rgba(0, 0, 0, .15);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    box-shadow:
+        inset 0px 0.4px 0.5px hsl(var(--shadow-color-dark) / 0.25),
+        inset 0px 1.1px 1.2px -0.8px hsl(var(--shadow-color-dark) / 0.25),
+        inset 0px 2.6px 2.9px -1.7px hsl(var(--shadow-color-dark) / 0.25),
+        inset 0px 6.3px 7.1px -2.5px hsl(var(--shadow-color-dark) / 0.25);
 }
 
 @media (max-width: 450px) {
@@ -575,9 +582,9 @@ refreshBar()
 
 .menu-category__cocktail__content p {
     font-size: 0.85rem;
-    color: var(--clr-gray-700);
+    color: rgba(255, 255, 255, 0.7);
     .dark-theme & {
-        color: var(--clr-gray-300);
+        color: rgba(255, 255, 255, 0.7);
     }
 }
 

@@ -81,8 +81,8 @@ refreshMenu()
 .public-page__header {
     padding: var(--gap-size-3);
     margin: var(--gap-size-3) 0;
-    background-color: #332d46;
-    border-bottom: 1px solid #6b6188;
+    background-color: rgba(40, 40, 40, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
         inset 0px 0.4px 0.5px hsl(var(--shadow-color-dark) / 0.25),
         inset 0px 1.1px 1.2px -0.8px hsl(var(--shadow-color-dark) / 0.25),
@@ -113,7 +113,7 @@ refreshMenu()
 
 .public-page-menu {
     padding: var(--gap-size-3);
-    background-color: var(--clr-gray-50);
+    background-color: rgba(20, 20, 20, 0.6);
     border-radius: var(--radius-2);
     display: flex;
     flex-direction: column;
@@ -121,13 +121,14 @@ refreshMenu()
 }
 
 .public-page-menu__bar {
-    color: var(--clr-gray-900);
+    color: rgba(255, 255, 255, 0.95);
     display: flex;
     flex-direction: row;
     gap: var(--gap-size-3);
-    background-color: #fff;
+    background-color: rgba(40, 40, 40, 0.6);
     padding: var(--gap-size-2);
     border-radius: var(--radius-1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .public-page-menu__bar img {
@@ -145,7 +146,7 @@ refreshMenu()
 }
 
 .public-page-menu__bar p {
-    color: var(--clr-gray-600);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .public-page-menu .public-page-menu__category h3 {
@@ -176,13 +177,13 @@ refreshMenu()
 }
 
 .public-page-menu__cocktail {
-    background: #fff;
+    background: rgba(40, 40, 40, 0.6);
     display: flex;
     gap: var(--gap-size-3);
     padding: var(--gap-size-2);
     border-radius: var(--radius-1);
-    /* color: var(--clr-gray-600); */
-    /* box-shadow: var(--shadow-elevation-low-dark); */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 545px) {
@@ -246,7 +247,7 @@ refreshMenu()
     font-size: 1.25rem;
     font-weight: var(--fw-bold);
     font-family: var(--font-heading);
-    color: var(--clr-gray-800);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 545px) {
@@ -256,7 +257,7 @@ refreshMenu()
 }
 
 .public-page-menu__cocktail__info p {
-    color: var(--clr-gray-500);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 @media (max-width: 545px) {
@@ -267,7 +268,7 @@ refreshMenu()
 
 .public-page-menu__cocktail__price {
     font-size: 1.5rem;
-    color: var(--clr-gray-900);
+    color: rgba(255, 255, 255, 0.95);
     font-weight: var(--fw-bold);
 }
 

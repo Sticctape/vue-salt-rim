@@ -22,7 +22,6 @@
                             </template>
                         </SaltRimDialog>
                     </template>
-                    <ThemeToggle></ThemeToggle>
                     <SaltRimDropdown>
                         <template #default="{ toggleDropdown }">
                             <a class="header-bar__navigation__link" href="#" @click.prevent="toggleDropdown">
@@ -76,10 +75,8 @@ import SiteAutocomplete from './../SiteAutocomplete.vue'
 import SiteAutocompleteBasic from './../SiteAutocompleteBasic.vue'
 import SaltRimDialog from './../Dialog/SaltRimDialog.vue'
 import SiteLogo from './../Layout/SiteLogo.vue'
-import ThemeToggle from './../ThemeToggle.vue'
 import AppState from '../../AppState'
 import SaltRimDropdown from './../SaltRimDropdown.vue'
-import { useTheme } from '@/composables/useTheme'
 import { useBasicSearch } from '@/composables/useBasicSearch'
 
 const shouldUseBasicSearch = useBasicSearch()
@@ -90,7 +87,6 @@ export default {
         SiteAutocompleteBasic,
         SaltRimDialog,
         SiteLogo,
-        ThemeToggle,
         SaltRimDropdown,
     },
     data() {
@@ -114,7 +110,6 @@ export default {
                 onResolved: (dialog) => {
                     dialog.close()
                     BarAssistantClient.logout().then(() => {
-                        useTheme('light')
                         const appState = new AppState()
                         appState.clear()
                         this.$router.push({ name: 'login' })

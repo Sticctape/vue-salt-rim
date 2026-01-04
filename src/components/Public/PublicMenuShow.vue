@@ -62,11 +62,11 @@ refreshMenu()
 
 .public-page-menu__category h3 {
     font-size: 1em;
-    color: var(--clr-gray-600);
+    color: rgba(255, 255, 255, 0.85);
     font-weight: var(--fw-bold);
 
     .dark-theme & {
-        color: var(--clr-gray-400);
+        color: rgba(255, 255, 255, 0.85);
     }
 }
 
@@ -149,19 +149,19 @@ refreshMenu()
         font-size: 1.25rem;
         font-weight: var(--fw-bold);
         font-family: var(--font-heading);
-        color: var(--clr-gray-800);
+        color: rgba(255, 255, 255, 0.95);
 
         .dark-theme & {
-            color: var(--clr-gray-200);
+            color: rgba(255, 255, 255, 0.95);
         }
     }
 
     p {
-        color: var(--clr-gray-700);
+        color: rgba(255, 255, 255, 0.7);
         font-size: 0.85em;
 
         .dark-theme & {
-            color: var(--clr-gray-300);
+            color: rgba(255, 255, 255, 0.7);
         }
     }
 }
