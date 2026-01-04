@@ -97,7 +97,7 @@ function buildSubstituteString(sub: CocktailIngredientSubstitute) {
 }
 
 .cocktail-ingredients__flags {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 .cocktail-ingredients__ingredient__name {

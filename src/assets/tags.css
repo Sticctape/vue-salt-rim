@@ -5,37 +5,40 @@
 }
 
 .tag {
-    --color-tag: #DFE7FD;
-    --color-text: var(--clr-gray-800);
+    --color-tag: rgba(100, 150, 255, 0.1);
+    --color-text: rgba(100, 150, 255, 0.8);
 
     text-decoration: none;
-    background-color: none;
-    padding: 2px 6px;
-    border-radius: var(--radius-2);
+    background-color: var(--color-tag);
+    padding: 4px 8px;
+    border-radius: 4px;
     font-size: 0.75rem;
     line-height: 1.3;
     white-space: nowrap;
+    border: 1px solid rgba(100, 150, 255, 0.2);
+    transition: all 0.2s ease;
 }
 
 .dark-theme .tag {
-    --color-tag: var(--clr-gray-700);
-    --color-text: var(--clr-gray-200);
+    --color-tag: rgba(100, 150, 255, 0.1);
+    --color-text: rgba(100, 150, 255, 0.8);
 }
 
 .tag.tag--link {
-    border: 1px solid var(--clr-accent-300);
+    border: 1px solid rgba(100, 150, 255, 0.3);
 }
 
 .tag.tag--link:hover,
 .tag.tag--link:focus,
 .tag.tag--link:active {
-  background-color: #fff;
+  background-color: rgba(100, 150, 255, 0.15);
+  border-color: rgba(100, 150, 255, 0.5);
 }
 
 .tag.tag--link.tag--is-selected {
-    background-color: var(--clr-gray-800);
-    border: 1px solid var(--clr-gray-800);
-    color: var(--color-text);
+    background-color: rgba(100, 150, 255, 0.2);
+    border: 1px solid rgba(100, 150, 255, 0.5);
+    color: #6b9fff;
 }
 
 .tag.tag--background {

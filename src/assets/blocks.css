@@ -1,22 +1,22 @@
 .block-container {
     --padding-block-container: 1.5rem;
-    --color-background-block-container: var(--clr-gray-50);
-    --color-border-bottom-block-container: var(--clr-accent-200);
-    --color-border-top-block-container: #fff;
+    --color-background-block-container: rgba(255, 255, 255, 0.12);
+    --color-border-bottom-block-container: rgba(255, 255, 255, 0.1);
+    --color-border-top-block-container: rgba(255, 255, 255, 0.15);
 
     background: var(--color-background-block-container);
     border-bottom: 1px solid var(--color-border-bottom-block-container);
-    border-top: 2px solid var(--color-border-top-block-container);
-    border-radius: var(--radius-2);
-    box-shadow: var(--shadow-elevation-medium);
+    border-top: 1px solid var(--color-border-top-block-container);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
 
     .dark-theme & {
-        --color-background-block-container: var(--clr-gray-800);
-        --color-border-bottom-block-container: var(--clr-gray-900);
-        --color-border-top-block-container: var(--clr-gray-650);
+        --color-background-block-container: rgba(255, 255, 255, 0.15);
+        --color-border-bottom-block-container: rgba(255, 255, 255, 0.1);
+        --color-border-top-block-container: rgba(255, 255, 255, 0.1);
 
-        border-width: 1px;
-        box-shadow: var(--shadow-elevation-medium-dark);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     &.block-container--padded {
@@ -24,25 +24,26 @@
     }
 
     &.block-container--hover:hover {
-        background: rgba(255, 255, 255, .8);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
 
         .dark-theme & {
-            background: var(--clr-gray-700);
-            border-top-color: var(--clr-gray-600);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
         }
     }
 
     &.block-container--placeholder {
-        background: var(--clr-purple-100);
-        opacity: 0.7;
-        color: var(--clr-purple-700);
-        border-top-color: var(--clr-purple-50);
-        border-bottom-color: var(--clr-purple-200);
+        background: rgba(100, 150, 255, 0.1);
+        opacity: 0.9;
+        color: #64a8ff;
+        border-top-color: rgba(100, 150, 255, 0.15);
+        border-bottom-color: rgba(100, 150, 255, 0.2);
 
         .dark-theme & {
-            background: var(--clr-accent-800);
-            border-top-color: var(--clr-accent-700);
-            border-bottom-color: var(--clr-accent-900);
+            background: rgba(100, 150, 255, 0.1);
+            border-top-color: rgba(100, 150, 255, 0.15);
+            border-bottom-color: rgba(100, 150, 255, 0.25);
         }
     }
 

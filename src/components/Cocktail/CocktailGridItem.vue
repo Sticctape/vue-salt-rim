@@ -110,6 +110,7 @@ onMounted(() => {
 }
 
 .cocktail-grid-item__content {
+    background: rgba(255, 255, 255, 0.15);
     padding: 1.5rem;
     border-radius: var(--radius-3);
     margin-top: -2.25rem;
@@ -124,8 +125,9 @@ onMounted(() => {
 }
 
 .cocktail-grid-item__ingredients {
-    color: var(--_clr-content);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.85rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .cocktail-grid-item__graphic {

@@ -27,13 +27,13 @@
 .site-page-header__title h2 {
     font-family: var(--font-heading);
     font-weight: var(--fw-bold);
-    font-size: 2em;
+    font-size: 2.2em;
     line-height: 1.4;
 }
 
 :deep(.site-page-header__title small) {
     font-family: var(--font-primary);
-    font-size: 0.5em;
+    font-size: 0.55em;
     color: var(--clr-gray-700);
     display: block;
 

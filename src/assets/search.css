@@ -23,8 +23,8 @@
     right: -8px;
     font-weight: bold;
     font-size: 0.825rem;
-    background-color: var(--clr-gray-800);
-    color: var(--clr-gray-200);
+    background-color: #6b9fff;
+    color: #000;
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -83,22 +83,24 @@
         position: fixed;
         top: 0;
         left: 0;
-        background-color: rgba(21, 13, 34, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         width: 100%;
         z-index: var(--z-mobile-search-refinements);
         height: 100%;
+        backdrop-filter: blur(4px);
     }
 
     .resource-search__refinements__body {
-        background: var(--clr-accent-50);
+        background: rgba(30, 30, 40, 0.95);
         width: 80%;
         height: 100%;
         padding: 1.5rem;
         overflow-y: scroll;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .dark-theme .resource-search__refinements__body {
-        background: var(--clr-gray-950);
+        background: rgba(30, 30, 40, 0.95);
     }
 }
 
@@ -106,11 +108,14 @@
     padding: var(--gap-size-2);
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
 }
 
 .dark-theme .resource-search__refinements__refinement {
-    border-color: var(--clr-gray-700);
-    background-color: rgba(0, 0, 0, .15);
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .resource-search__refinements__refinement__body {
@@ -124,12 +129,10 @@
 }
 
 .resource-search__refinements__refinement__title h4 {
-    color: var(--clr-header-title);
-    font-weight: var(--fw-bold);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
     text-transform: uppercase;
-    /* letter-spacing: 1px; */
     font-size: 0.715rem;
-    /* margin-bottom: 0.5rem; */
 }
 
 .resource-search__refinements__refinement__title__actions {
@@ -139,6 +142,7 @@
 
 .resource-search__refinements__refinement__item {
     margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .resource-search__refinements__refinement__item input[type="checkbox"],
@@ -146,6 +150,7 @@
     margin-right: 0.25rem;
     width: 1rem;
     height: 1rem;
+    accent-color: #6b9fff;
 }
 
 .ingredient-finder__search-input {

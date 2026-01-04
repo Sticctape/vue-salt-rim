@@ -452,5 +452,6 @@ refreshShelf()
 .salt-rim-list {
     display: flex;
     flex-direction: column;
+    gap: 0.1rem;
 }
 </style>

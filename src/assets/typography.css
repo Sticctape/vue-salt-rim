@@ -24,15 +24,16 @@
 }
 
 .has-markdown hr {
-    border: 1px solid var(--clr-gray-300);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0.75rem 0;
 }
 
 .sr-grid-title {
     font-size: 1.5em;
     font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
+    font-weight: 600;
     line-height: 1.2;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 450px) {
@@ -44,19 +45,26 @@
 .sr-list-item-title {
     font-size: 1.25em;
     font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
+    font-weight: 600;
     line-height: 1.2;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .block-container__title {
     font-family: var(--font-heading);
     font-size: 1.5em;
-    font-weight: var(--fw-bold);
+    font-weight: 600;
     margin-bottom: 1rem;
     line-height: 1;
-    color: var(--clr-accent-600);
+    color: #6b9fff;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.45),
+        0 0 8px rgba(0, 0, 0, 0.35);
 }
 
 .dark-theme .block-container__title {
-    color: var(--clr-accent-200);
+    color: rgb(255, 255, 255);
+    text-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.7),
+        0 0 8px rgba(255, 255, 255, 0.28);
 }
