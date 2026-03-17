@@ -8,44 +8,48 @@
                     </button>
                 </template>
                 <template #dialog>
-                    <div class="dialog-title">Filter cocktails</div>
+                    <div class="dialog-title">{{ $t('public-bar.filter-title') }}</div>
                     <div class="dialog-content">
                         <div class="form-group">
-                            <label class="form-label" for="year">Sort:</label>
+                            <label class="form-label" for="year">{{ $t('public-bar.filters-sort-label') }}:</label>
                             <select id="year" class="form-select" v-model="activeFilters.sort">
                                 <option v-for="sort in availableSorts" :key="sort.value" :value="sort.value">{{ sort.label }}</option>
                             </select>
                         </div>
-                        <label class="form-label" for="year">Global filters:</label>
+                        <label class="form-label" for="year">{{ $t('public-bar.filters-global-label') }}:</label>
                         <div class="form-group form-group--checkbox">
                             <label class="form-label" for="filter-bar-shelf">
                                 <input id="filter-bar-shelf" type="checkbox" v-model="activeFilters.filter.bar_shelf">
                                 <div class="form-group-checkbox-content">
-                                    <div class="form-group-checkbox-content__label">Show bar shelf cocktails</div>
-                                    <div class="form-group-checkbox-content__help">Only shows cocktails that can be made in the bar</div>
+                                    <div class="form-group-checkbox-content__label">{{ $t('public-bar.filters-bar-shelf-label') }}</div>
+                                    <div class="form-group-checkbox-content__help">{{ $t('public-bar.filters-bar-shelf-help') }}</div>
                                 </div>
                             </label>
                         </div>
-                        <!-- <label class="form-label" for="year">ABV:</label>
-                        <div v-for="abv in abvFilters" :key="abv.id">
-                            <input :id="abv.id" name="abv-filter" type="radio" value="abv.value">
-                            <label :for="abv.id">{{ abv.name }}</label>
-                        </div> -->
+                        <label class="form-label" for="year">{{ $t('public-bar.filters-collections-label') }}:</label>
+                        <div class="form-group form-group--checkbox">
+                            <label class="form-label" :for="'filter-bar-collections-' + collection.id" v-for="collection in meta?.filters?.collections || []" :key="collection.id">
+                                <input :id="'filter-bar-collections-' + collection.id" type="checkbox" :name="'filter-bar-collections-' + collection.id" v-model="activeFilters.filter.collection_id" :value="collection.id">
+                                <div class="form-group-checkbox-content">
+                                    <div class="form-group-checkbox-content__label">{{ collection.name }}</div>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                     <div class="dialog-actions">
-                        <button type="submit" class="button button--outline" @click="showFiltersDialog = false">Cancel</button>
-                        <button type="submit" class="button button--dark" @click="applyFilters">Filter</button>
+                        <button type="submit" class="button button--outline" @click="showFiltersDialog = false">{{ $t('cancel') }}</button>
+                        <button type="submit" class="button button--dark" @click="applyFilters">{{ $t('filter') }}</button>
                     </div>
                 </template>
             </SaltRimDialog>
-            <input class="form-input" type="search" placeholder="Search cocktails by name..." v-model="activeFilters.filter.name" @input="debounceSearch">
+            <input class="form-input" type="search" :placeholder="$t('public-bar.filters-search-placeholder')" v-model="activeFilters.filter.name" @input="debounceSearch">
             <button class="button button--dark" @click="resetFilters">
                 <svg class="public-cocktail-grid-filter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
             </button>
         </div>
         <div class="public-cocktail-grid">
             <CocktailItem v-for="cocktail in cocktails" :key="cocktail.slug" :cocktail="cocktail" :bar="bar"></CocktailItem>
-            <div v-if="cocktails.length === 0">No cocktails found</div>
+            <div v-if="cocktails.length === 0">{{ $t('no-cocktails') }}</div>
         </div>
         <Pagination :meta="meta" @page-changed="handlePageChange"></Pagination>
     </div>
@@ -53,16 +57,18 @@
 
 <script setup lang="ts">
 import qs from 'qs'
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import BarAssistantClient from '@/api/BarAssistantClient'
 import CocktailItem from './PublicCocktailGridItem.vue'
-import type { components } from '@/api/api'
+import type { components, operations } from '@/api/api'
 import { useRoute, useRouter, type LocationQueryRaw } from 'vue-router'
 import SaltRimDialog from '../Dialog/SaltRimDialog.vue'
 import Pagination from './../Search/SearchPagination.vue'
+import { useI18n } from 'vue-i18n'
 
 type Cocktail = components['schemas']['PublicCocktailResource']
 type Bar = components['schemas']['PublicBarResource']
+type Meta = operations['listPublicBarCocktails']['responses']['200']['content']['application/json']['meta'];
 
 defineProps<{
     bar: Bar
@@ -72,14 +78,15 @@ const showFiltersDialog = ref(false)
 const cocktails = ref<Cocktail[]>([])
 const queryTimer = ref<number | null>(null)
 const route = useRoute()
-const meta = ref({})
+const meta = ref({} as Meta)
 const router = useRouter()
-const availableSorts = [
-    { value: 'name', label: 'Name (A-Z)' },
-    { value: '-name', label: 'Name (Z-A)' },
-    { value: 'created_at', label: 'Oldest recipes' },
-    { value: '-created_at', label: 'Newest recipes' },
-]
+const { t } = useI18n()
+const availableSorts = computed(() => [
+    { value: 'name', label: t('public-bar.sort-name-asc') },
+    { value: '-name', label: t('public-bar.sort-name-desc') },
+    { value: 'created_at', label: t('public-bar.sort-created-asc') },
+    { value: '-created_at', label: t('public-bar.sort-created-desc') },
+])
 const barId = route.params.barId.toString()
 
 const defaultRefinements = {
@@ -88,6 +95,7 @@ const defaultRefinements = {
     filter: {
         name: null as string | null,
         bar_shelf: false,
+        collection_id: [] as number[],
     }
 }
 const activeFilters = ref({...defaultRefinements, filter: { ...defaultRefinements.filter }})
@@ -100,6 +108,7 @@ const stateToQuery = () => {
     query.filter = {
         name: activeFilters.value.filter.name || undefined,
         bar_shelf: activeFilters.value.filter.bar_shelf || undefined,
+        collection_id: activeFilters.value.filter.collection_id.length > 0 ? activeFilters.value.filter.collection_id.join(',') : undefined,
     }
 
     return query
@@ -115,6 +124,7 @@ const queryToState = () => {
     activeFilters.value.sort = route.query.sort ? (route.query.sort as string) : defaultRefinements.sort
     activeFilters.value.filter.name = (queryString.filter as any)?.name || defaultRefinements.filter.name
     activeFilters.value.filter.bar_shelf = (queryString.filter as any)?.bar_shelf || defaultRefinements.filter.bar_shelf
+    activeFilters.value.filter.collection_id = (queryString.filter as any)?.collection_id ? String((queryString.filter as any)?.collection_id).split(',').map((id: string) => parseInt(id)) : defaultRefinements.filter.collection_id
 }
 
 const fetchCocktails = async () => {
