@@ -12,19 +12,6 @@
     --clr-accent-100: #abcdff;
     --clr-accent-50: #bbddff;
 
-    /* Neutral grays */
-    --clr-gray-950: #000000;
-    --clr-gray-900: #0d0d0d;
-    --clr-gray-800: #1a1a1a;
-    --clr-gray-700: #282828;
-    --clr-gray-600: #3a3a3a;
-    --clr-gray-500: #4a4a4a;
-    --clr-gray-400: #6a6a6a;
-    --clr-gray-300: #888888;
-    --clr-gray-200: #aaaaaa;
-    --clr-gray-100: #cccccc;
-    --clr-gray-50: #e0e0e0;
-
     /* Purple accent (kept for compatibility) */
     --clr-purple-950: #000000;
     --clr-purple-900: #0f0f1f;
@@ -103,7 +90,7 @@
 
     --color-site-header: rgba(40, 40, 40, 1);
     --color-site-header-subnavigation: rgb(27, 27, 27);
-    --clr-site-footer: #fff;
+    --clr-site-footer: var(--clr-gray-950);
 
     --site-width: 1440px;
 
@@ -140,19 +127,6 @@
     --clr-gray-950: #120e1a;
 }
 
-.dark-theme {
-    --default-scheme: dark;
-
-    --clr-link-color: var(--clr-gray-200);
-    --clr-link-color-hover: var(--clr-accent-400);
-    --clr-body-font: var(--clr-gray-50);
-    --clr-body-bg: var(--clr-gray-900);
-
-    --clr-site-footer: var(--clr-gray-950);
-
-    --color-site-header: rgba(40, 40, 40, 1);
-    --color-site-header-subnavigation: rgb(27, 27, 27);
-}
 
 *,
 *::before,

@@ -109,7 +109,7 @@ class AppState {
             return false
         }
 
-        return this.user.id != null || this.user.id != undefined
+        return this.user.id != null
     }
 
     clear() {

@@ -287,7 +287,6 @@ const ingredient = ref<Ingredient>({
 const calculator = ref<Calculator>({} as Calculator)
 
 async function refreshIngredient() {
-    console.log('[IngredientDetails] refreshIngredient() called')
     isLoadingIngredient.value = true
     try {
         ingredient.value = (await BarAssistantClient.getIngredient(route.params.id.toString()))?.data ?? {} as Ingredient
@@ -457,15 +456,6 @@ watch(
     align-items: center;
     padding: var(--gap-size-3);
     border-radius: var(--radius-3);
-    border-bottom: 1px solid #fff;
-    box-shadow:
-        inset 0px 0.4px 0.5px rgba(0, 0, 0, .04),
-        inset 0px 1.1px 1.2px -0.8px rgba(0, 0, 0, .04),
-        inset 0px 2.6px 2.9px -1.7px rgba(0, 0, 0, .04),
-        inset 0px 6.3px 7.1px -2.5px rgba(0, 0, 0, .04);
-}
-
-.dark-theme .ingredient-details__graphic {
     border-bottom: 1px solid rgba(255, 255, 255, .15);
     box-shadow:
         inset 0px 0.4px 0.5px rgba(0, 0, 0, .1),
@@ -535,9 +525,6 @@ watch(
     padding: 0.5rem 0.75rem;
     margin: 0 0 1rem 0;
     list-style-type: none;
-}
-
-.dark-theme .ingredient-details__more {
     background-color: rgba(0, 0, 0, .4);
 }
 
@@ -583,11 +570,7 @@ watch(
     width: 32px;
     height: 32px;
     display: block;
-    fill: var(--clr-gray-600);
-
-    .dark-theme & {
-        fill: var(--clr-gray-400);
-    }
+    fill: var(--clr-gray-400);
 }
 
 .shelf-actions__action svg.shelf-actions__action__active {
@@ -603,11 +586,7 @@ watch(
 
 .shelf-actions__action small {
     line-height: 1.2;
-    color: var(--clr-gray-600);
-
-    .dark-theme & {
-        color: var(--clr-gray-300);
-    }
+    color: var(--clr-gray-300);
 }
 
 @media (max-width: 450px) {
