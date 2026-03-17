@@ -1,4 +1,36 @@
+# 4.15.0
+## New
+- Env variables `ANALYTICS_DOMAIN` no longer used
+    - Moved to `ANALYTICS_HOST`
+
+# 4.14.1
+## Fixes
+- Fixed AI features missing in OAuth enabled environments
+
+## Changes
+- Added cache busting for config file
+
+# 4.14.0
+## New
+- Removed client AI features
+    - Setup is now done via Bar Assistant API
+    - Removed `AI_PROVIDER`, `AI_API_KEY`, `AI_HOST`, `AI_MODEL`
+    - Please refer to Bar Assistant API v5.13.0 changelog for more info
+- Added new import option: "Import from text"
+    - This allows you to paste raw unstructured text and let AI parse it into a cocktail recipe
+    - This requires generative AI to be setup in Bar Assistant API
+
+## Changes
+- Removed feeds view
+
+# v4.13.0
+## New
+- Added collection filters to public cocktails page
+
 # v4.12.1
+## Changes
+- Reused recipe scaler component from public recipe page
+
 ## Fixes
 - Fixed missing glass and tags on imported cocktails
 - Fixed public menu dark theme styling
