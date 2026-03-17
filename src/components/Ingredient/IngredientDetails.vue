@@ -287,6 +287,7 @@ const ingredient = ref<Ingredient>({
 const calculator = ref<Calculator>({} as Calculator)
 
 async function refreshIngredient() {
+    console.log('[IngredientDetails] refreshIngredient() called')
     isLoadingIngredient.value = true
     try {
         ingredient.value = (await BarAssistantClient.getIngredient(route.params.id.toString()))?.data ?? {} as Ingredient
@@ -300,8 +301,14 @@ async function refreshIngredient() {
     isLoadingIngredient.value = false
 
     isLoadingExtra.value = true
-    extraIfAddedToShelf.value = (await BarAssistantClient.getExtraCocktailsWithIngredient(ingredient.value.id))?.data ?? []
-    isLoadingExtra.value = false
+    try {
+        extraIfAddedToShelf.value = (await BarAssistantClient.getExtraCocktailsWithIngredient(ingredient.value.id))?.data ?? []
+    } catch (e: any) {
+        toast.error(e?.message ?? 'Failed to load related cocktails.')
+        extraIfAddedToShelf.value = []
+    } finally {
+        isLoadingExtra.value = false
+    }
 }
 
 async function fetchCalculator() {
@@ -382,6 +389,7 @@ watch(
 
 <style scoped>
 .ingredient-details {
+    position: relative;
     display: grid;
     gap: var(--gap-size-3);
     grid-template-columns: 300px minmax(0, 1fr);
@@ -520,6 +528,7 @@ watch(
 }
 
 .ingredient-details__more {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -561,6 +570,7 @@ watch(
 }
 
 .shelf-actions__action {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;

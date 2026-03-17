@@ -268,33 +268,38 @@ const ingredientPrompt = computed(() => {
 
 async function refreshIngredient(id: string) {
     isLoading.value = true
-    const resp = (await BarAssistantClient.getIngredient(id))?.data ?? null
-    if (!resp) {
-        return
-    }
-
-    if (isDuplicatedAsVariant.value) {
-        resp.hierarchy.parent_ingredient = {
-            id: resp.id,
-            slug: resp.slug,
-            name: resp.name,
+    try {
+        const resp = (await BarAssistantClient.getIngredient(id))?.data ?? null
+        if (!resp) {
+            toast.error('Request completed but returned no data.')
+            return
         }
-        /** @ts-ignore */
-        delete resp.id
-        resp.images = []
-        resp.prices = []
-        resp.calculator_id = null
-        resp.name = `${resp.name} (Variant)`
+
+        if (isDuplicatedAsVariant.value) {
+            resp.hierarchy.parent_ingredient = {
+                id: resp.id,
+                slug: resp.slug,
+                name: resp.name,
+            }
+            /** @ts-ignore */
+            delete resp.id
+            resp.images = []
+            resp.prices = []
+            resp.calculator_id = null
+            resp.name = `${resp.name} (Variant)`
+        }
+
+        resp.description = useHtmlDecode(resp.description ?? '')
+        isParent.value = resp.hierarchy.parent_ingredient != null
+        isComplex.value = (resp.ingredient_parts && resp.ingredient_parts.length > 0) || false
+        ingredient.value = resp
+
+        useTitle(`${t('ingredient.title')} \u22C5 ${ingredient.value.name}`)
+    } catch (e: any) {
+        toast.error(e?.message ?? 'Failed to load ingredient.')
+    } finally {
+        isLoading.value = false
     }
-
-    resp.description = useHtmlDecode(resp.description ?? '')
-    isParent.value = resp.hierarchy.parent_ingredient != null
-    isComplex.value = (resp.ingredient_parts && resp.ingredient_parts.length > 0) || false
-    ingredient.value = resp
-
-    useTitle(`${t('ingredient.title')} \u22C5 ${ingredient.value.name}`)
-
-    isLoading.value = false
 }
 
 function refreshCalculators() {

@@ -26,10 +26,10 @@ async function fetchTree(id: string) {
     try {
         hierarchy.value = (await BarAssistantClient.getIngredientTree(id))?.data ?? null
     } catch (e) {
-        return
+        hierarchy.value = null
+    } finally {
+        isLoading.value = false
     }
-
-    isLoading.value = false
 }
 
 const onlyVariants = computed((): IngredientTree|null => {

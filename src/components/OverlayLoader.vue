@@ -1,5 +1,30 @@
+<script setup lang="ts">
+import { computed, getCurrentInstance } from 'vue'
+
+const instance = getCurrentInstance()
+
+const parentFile = computed(() => {
+    const parentType = instance?.parent?.type as any
+    return parentType?.__file ?? 'unknown'
+})
+
+const showDebugLabel = computed(() => {
+    if (!import.meta.env.DEV) {
+        return false
+    }
+
+    try {
+        return new URLSearchParams(window.location.search).has('debugOverlays')
+    } catch {
+        return false
+    }
+})
+</script>
+
 <template>
-    <div class="overlay-loader"></div>
+    <div class="overlay-loader" :data-overlay-parent="parentFile">
+        <div v-if="showDebugLabel" class="overlay-loader__debug">{{ parentFile }}</div>
+    </div>
 </template>
 
 <style scoped>
@@ -25,6 +50,23 @@
     justify-content: center;
     z-index: var(--z-overlay-loader);
     backdrop-filter: blur(1px);
+}
+
+.overlay-loader__debug {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+    padding: 0.25rem 0.5rem;
+    font-size: 12px;
+    line-height: 1.2;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    max-width: calc(100% - 1rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .overlay-loader:after {

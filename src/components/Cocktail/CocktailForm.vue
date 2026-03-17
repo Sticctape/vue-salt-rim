@@ -501,6 +501,8 @@ async function submit() {
     if (cocktail.value.id) {
         BarAssistantClient.updateCocktail(cocktail.value.id, postData).then(resp => {
             if (!resp) {
+                isLoading.value = false
+                toast.error('Request completed but returned no data.')
                 return
             }
 
@@ -514,6 +516,8 @@ async function submit() {
     } else {
         BarAssistantClient.saveCocktail(postData).then(resp => {
             if (!resp) {
+                isLoading.value = false
+                toast.error('Request completed but returned no data.')
                 return
             }
 

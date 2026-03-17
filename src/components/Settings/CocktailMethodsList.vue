@@ -77,13 +77,19 @@ async function refreshMethods() {
     showDialog.value = false
     isLoading.value = true
 
-    const resp = (await BarAssistantClient.getCocktailMethods())?.data;
-    if (!resp) {
-        return
-    }
+    try {
+        const resp = (await BarAssistantClient.getCocktailMethods())?.data;
+        if (!resp) {
+            toast.error('Request completed but returned no data.')
+            return
+        }
 
-    methods.value = resp
-    isLoading.value = false
+        methods.value = resp
+    } catch (e: any) {
+        toast.error(e?.message ?? 'Failed to load cocktail methods.')
+    } finally {
+        isLoading.value = false
+    }
 }
 
 function openDialog(title: string, obj: CocktailMethod) {

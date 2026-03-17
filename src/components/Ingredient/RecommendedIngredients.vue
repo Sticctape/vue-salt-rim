@@ -26,8 +26,11 @@ const shelfPercent = computed(() => {
 
 async function fetchRecommendedIngredients() {
     isLoading.value = true
-    recommendedIngredients.value = (await BarAssistantClient.getBarRecommendedIngredients(appState.bar.id))?.data ?? []
-    isLoading.value = false
+    try {
+        recommendedIngredients.value = (await BarAssistantClient.getBarRecommendedIngredients(appState.bar.id))?.data ?? []
+    } finally {
+        isLoading.value = false
+    }
 }
 </script>
 

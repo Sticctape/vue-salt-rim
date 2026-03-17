@@ -46,16 +46,17 @@
 }
 
 .v-toast {
-    padding: 1rem;
-    background: rgba(30, 30, 40, 0.95) !important;
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10000;
 }
 
 .v-toast__item {
     margin: .25rem 0;
     opacity: 1;
     min-height: auto;
+    padding: 1rem;
+    background: rgba(100, 100, 100, 0.7) !important;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .v-toast__item--default {
@@ -70,6 +71,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 main {
+    position: relative;
     max-width: var(--site-width);
     margin: 0 auto;
     padding: 0 10px;

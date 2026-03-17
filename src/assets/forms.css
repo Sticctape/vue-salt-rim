@@ -206,3 +206,15 @@ textarea.form-input,
     top: 0.85rem;
     right: 0.5rem;
 }
+
+/* Style for native select dropdown options */
+.form-select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.form-select option:checked {
+    background: linear-gradient(#6b9fff, #6b9fff);
+    background-color: #6b9fff;
+    color: #ffffff;
+}
